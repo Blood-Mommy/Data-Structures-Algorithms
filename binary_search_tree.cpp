@@ -22,17 +22,18 @@ private:
     Node* root;
     
     // Helper function to insert a node recursively
-    Node* insertNode(Node* node, int value) {
+    Node* insertNode(Node* node, int value, bool& inserted) {
         if (node == nullptr) {
+            inserted = true;
             return new Node(value);
         }
         
         if (value < node->data) {
-            node->left = insertNode(node->left, value);
+            node->left = insertNode(node->left, value, inserted);
         } else if (value > node->data) {
-            node->right = insertNode(node->right, value);
+            node->right = insertNode(node->right, value, inserted);
         } else {
-            cout << "Duplicate value " << value << " not inserted" << endl;
+            inserted = false;
         }
         
         return node;
@@ -88,8 +89,13 @@ public:
     
     // Insert a value into the BST
     void insert(int value) {
-        root = insertNode(root, value);
-        cout << "Inserted " << value << " into the BST" << endl;
+        bool inserted = false;
+        root = insertNode(root, value, inserted);
+        if (inserted) {
+            cout << "Inserted " << value << " into the BST" << endl;
+        } else {
+            cout << "Duplicate value " << value << " not inserted" << endl;
+        }
     }
     
     // Inorder traversal (sorted order)
