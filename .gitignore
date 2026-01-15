@@ -1,0 +1,25 @@
+# Compiled executables
+array_operations
+bubble_sort
+stack_implementation
+binary_search_tree
+
+# Object files
+*.o
+*.obj
+
+# Other compiled files
+*.exe
+*.out
+*.app
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
